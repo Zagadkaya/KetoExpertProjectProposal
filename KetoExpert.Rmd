@@ -1,0 +1,55 @@
+---
+title: "KetoExpert Project Proposal"
+author: "Inna Gimelberg"
+date: "18 December 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Problem overview
+
+More and more people take attempts to follow a healthy lifestyle during the last decade. We know a lot about benefits of sports and healthy eating and well informed what kind of things we should avoid to stay fit and well. Nevertheless, it is clear, that smoking, alcohol abuse and taking illegal drugs is crucial, but there are so many controversial opinions concerning the food we consume.
+
+The latest researches promote ketogenic diet as the most beneficial for individuals’ health and a very important part of a management plan for few medical conditions like diabetes type 2, epilepsy, autism, ADHD and more. It limits carbohydrates while raising levels of healthy fats and protein. The main principle within others is the exact proportion of macronutrients in individual's everyday diet. 
+
+```{r keto_proportion, echo=FALSE}
+require(grDevices)
+keto_proportion <- c(20, 75, 5)
+names(keto_proportion) <- c("Protein", "Fat", "Carbs net")
+pie(keto_proportion, col = c("red", "yellow", "green"))
+```
+
+And for people who just start that track would be challenging enough to stay within the required limits without help. 
+There are many nutritional calculators on the market, but none of them provides a valuable structured foods list, allowing to clearly evaluate and plan the optimal menu for an individual on everyday basis.
+As there is a wide range of initial varieties of the diet like carbohydrates restrictions, individual food preferences, number of meals per day and others, the list of recommendations might be very different from one person to another. The potential client of the product would be a rational diet follower or a patient/his or her guardian trying to simplify everyday food choice or matching the medical protocol. 
+
+### Data
+
+The main source of data is the USDA nutrient database <http://bl.ocks.org/syntagmatic/raw/3150059/nutrients.csv>.
+
+```{r nutrients, echo=FALSE}
+library(readr)
+nutrients <- read_csv("nutrients.csv")
+str(nutrients, max.level = 2)
+```
+
+It doesn't look absolutely perfect, having missing values, but this is the official up-to-date database and seems to suit the needs of this project.
+
+### Approach
+
+The project's goal is development of an optimization tool with several rated variables:
+    
+ * macronutrients daily proportion;
+ * restrictions on objects or groops of objects;
+ * calorie intake;
+ * micronutrients valuation;
+ * objects compatibility;
+ * individual tastes preferences.
+    
+### Deliverables
+
+The deliverable of the project would be algorithms, resulting in individual reports like individual recommendations, weekly meal plans, cheat sheets, etc. 
+
